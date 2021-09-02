@@ -42,9 +42,9 @@ export const checkAuthTimeout = (expirationTime) => {
 export const auth = (email, password, isSignup) => {
   return dispatch => {
     dispatch(authStart());
-    let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBIW8EQcfwkDpXkALSB-60U-mVOZrxRfk4';
+    let url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.API_KEY}`;
     if (!isSignup) {
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBIW8EQcfwkDpXkALSB-60U-mVOZrxRfk4';
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.API_KEY}`;
     }
     axios.post(url, {
       email: email,
